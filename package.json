@@ -1,0 +1,26 @@
+{
+  "name": "udes-polymer-build",
+  "version": "1.0.0",
+  "description": "Outils de build pour Polymer",
+  "main": "index.js",
+  "dependencies": {
+    "cpx": "^1.5.0",
+    "inline-source-cli": "^1.2.0",
+    "replace-in-file": "^2.5.3"
+  },
+  "scripts": {
+    "build-dev": "polymer build && npm install && node index.js -- -addBuildDir=true",
+    "build": "polymer build && npm install && node index.js",
+    "build-test": "polymer build && npm install && node index.js -- -rootURI='~webv9201/nsquart2/inscription-fcnc/'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UdeS-STI/udes-polymer-build.git"
+  },
+  "author": "JF Belisle <jfbelisle89@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UdeS-STI/udes-polymer-build/issues"
+  },
+  "homepage": "https://github.com/UdeS-STI/udes-polymer-build#readme"
+}
