@@ -31,20 +31,20 @@
  */
 console.log("");
 
-var cpx = require("cpx"),
-    fs = require('fs'),
-    replace = require("replace-in-file"),
-    inline = require('inline-source'),
-    path = require('path');
+const cpx = require("cpx");
+const fs = require('fs');
+const replace = require("replace-in-file");
+const inline = require('inline-source');
+const path = require('path');
 
 const NOM_ARGUMENT_POUR_REWRITE_SANS_DOSSIER_BUILD = "noBuildDir";
 
 // arguments
-var dir = "build/",
-    devdir,
-    listeNomsBuild = [],
-    debug = true ,
-    rewriteSansDossierBuild = true;
+let dir = "build/";
+let devdir;
+let listeNomsBuild = [];
+let debug = true;
+let rewriteSansDossierBuild = true;
 
 
 function formatDir(dir) {
@@ -104,9 +104,9 @@ function validerLesArguments (argv) {
 }
 
 function copieHtaccess (dossierDuBuild) {
-    var sourceHtaccess = "htaccess.sample",
-        htaccessSample = dossierDuBuild + "/" + sourceHtaccess,
-        htaccess = dossierDuBuild + '/.htaccess';
+    const sourceHtaccess = "htaccess.sample";
+    const htaccessSample = dossierDuBuild + "/" + sourceHtaccess;
+    const htaccess = dossierDuBuild + '/.htaccess';
 
     if ( !fs.existsSync( sourceHtaccess ) ) {
         throw "Erreur, Le fichier " + sourceHtaccess + " n'existe pas.";
@@ -183,21 +183,21 @@ try {
     validerLesArguments(process.argv);
 
     listeNomsBuild.forEach(nomBuild => {
-        var dossierDuBuild = dir + nomBuild;
-        console.log( "dossierDuBuild : ", dossierDuBuild);
+      var dossierDuBuild = dir + nomBuild;
+      console.log("dossierDuBuild : ", dossierDuBuild);
 
-        copieHtaccess(dossierDuBuild);
-        remplacementRewriteHtaccess(dossierDuBuild);
-        modifierMetaBaseIndex(dossierDuBuild);
-        modifierInlineIndex(dossierDuBuild);
-        compresserInlineIndex(dossierDuBuild);
+      copieHtaccess(dossierDuBuild);
+      remplacementRewriteHtaccess(dossierDuBuild);
+      modifierMetaBaseIndex(dossierDuBuild);
+      modifierInlineIndex(dossierDuBuild);
+      compresserInlineIndex(dossierDuBuild);
     });
 
     process.exit(0);
-} catch(error) {
+} catch (error) {
     console.error("\033[1;31m \n\n===========\n" +
-        "ERREUR!!!!\n" +
-        "%s\n" +
-        "===============\n", error);
+      "ERREUR!!!!\n" +
+      "%s\n" +
+      "===============\n", error);
     process.exit(1);
 }

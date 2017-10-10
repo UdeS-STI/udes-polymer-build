@@ -1,17 +1,18 @@
 {
   "name": "udes-polymer-build",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Outils de build pour Polymer",
   "main": "index.js",
   "dependencies": {
     "cpx": "^1.5.0",
     "inline-source-cli": "^1.2.0",
-    "replace-in-file": "^2.5.3"
+    "replace-in-file": "^2.5.3",
+    "shelljs": "0.7.8"
   },
-  "scripts": {
-    "build-dev": "polymer build && npm install && node index.js -- -addBuildDir=true",
-    "build": "polymer build && npm install && node index.js",
-    "build-test": "polymer build && npm install && node index.js -- -rootURI='~webv9201/nsquart2/inscription-fcnc/'"
+  "bin": {
+    "polymer-build-dev": "bin/polymer-build-dev.js",
+    "polymer-build": "bin/polymer-build.js",
+    "polymer-build-test": "bin/polymer-build-test.js"
   },
   "repository": {
     "type": "git",
